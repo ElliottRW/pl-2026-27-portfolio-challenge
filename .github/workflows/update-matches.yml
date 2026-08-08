@@ -1,0 +1,148 @@
+name: Update Match Data
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch match data from ESPN
+        run: |
+          python3 << 'EOF'
+          import json, subprocess, sys
+
+          def fetch(url):
+              r = subprocess.run(['curl', '-s', '--max-time', '15', url], capture_output=True, text=True)
+              if r.returncode != 0 or not r.stdout.strip():
+                  return None
+              try:
+                  return json.loads(r.stdout)
+              except:
+                  return None
+
+          STATUS_MAP = {
+              'STATUS_FULL_TIME':   'FINISHED',
+              'STATUS_IN_PROGRESS': 'IN_PLAY',
+              'STATUS_HALFTIME':    'PAUSED',
+              'STATUS_SCHEDULED':   'TIMED',
+              'STATUS_POSTPONED':   'SCHEDULED',
+          }
+
+          # ── Ratchet: load existing FINISHED results so they can't vanish ──────
+
+          try:
+              with open('matches.json') as f:
+                  existing = json.load(f)
+              finished_cache = {}
+              for m in existing:
+                  if m.get('status') == 'FINISHED':
+                      h = (m['homeTeam'] or {}).get('name')
+                      a = (m['awayTeam'] or {}).get('name')
+                      if h and a:
+                          finished_cache[(h, a)] = m
+              print(f'Ratchet: loaded {len(finished_cache)} previously-finished matches')
+          except Exception as e:
+              finished_cache = {}
+              print(f'Ratchet: starting fresh ({e})')
+
+          # ── Fetch full 2026/27 season from ESPN ───────────────────────────────
+
+          url = ('https://site.api.espn.com/apis/site/v2/sports/soccer'
+                 '/eng.1/scoreboard?dates=20260801-20270601&limit=500')
+          data = fetch(url)
+          if not data:
+              print('ERROR: Could not fetch ESPN data', file=sys.stderr)
+              sys.exit(1)
+
+          events = data.get('events', [])
+          print(f'ESPN returned {len(events)} events')
+
+          # ── Compute gameweek: bucket matches chronologically, 10 per round ────
+          # (20 clubs / 2 = 10 matches per full round). Approximate — some
+          # fixtures get moved for TV and may land in the "wrong" bucket.
+
+          sorted_ids = sorted(events, key=lambda e: e['date'])
+          matchday_map = {e['id']: (i // 10) + 1 for i, e in enumerate(sorted_ids)}
+
+          # ── Convert events ────────────────────────────────────────────────────
+
+          result = []
+          for e in events:
+              status_name = e['status']['type']['name']
+              status = STATUS_MAP.get(status_name, 'TIMED')
+
+              comp        = e['competitions'][0]
+              competitors = comp['competitors']
+              home_c = next((c for c in competitors if c['homeAway'] == 'home'), None)
+              away_c = next((c for c in competitors if c['homeAway'] == 'away'), None)
+
+              home_name = home_c['team']['displayName'] if home_c else None
+              away_name = away_c['team']['displayName'] if away_c else None
+              home_logo = home_c['team'].get('logo', '') if home_c else ''
+              away_logo = away_c['team'].get('logo', '') if away_c else ''
+
+              finished = status == 'FINISHED'
+              home_score = int(home_c['score']) if finished and home_c and home_c.get('score') else None
+              away_score = int(away_c['score']) if finished and away_c and away_c.get('score') else None
+
+              winner = None
+              if finished and home_c and away_c:
+                  if home_c.get('winner'):
+                      winner = 'HOME_TEAM'
+                  elif away_c.get('winner'):
+                      winner = 'AWAY_TEAM'
+                  elif home_score is not None and home_score == away_score:
+                      winner = 'DRAW'
+
+              matchday = matchday_map.get(e['id'])
+
+              # ── Ratchet: if we had this match as FINISHED, trust that over a
+              #    temporary API downgrade (IN_PLAY / TIMED / missing data).
+              if not finished and home_name and away_name:
+                  cached = finished_cache.get((home_name, away_name))
+                  if cached:
+                      print(f'  Ratchet applied: keeping FINISHED for {home_name} vs {away_name}')
+                      status     = 'FINISHED'
+                      cs         = cached['score']
+                      winner     = cs['winner']
+                      home_score = cs['fullTime']['home']
+                      away_score = cs['fullTime']['away']
+
+              result.append({
+                  'id':      e['id'],
+                  'utcDate': e['date'],
+                  'status':  status,
+                  'matchday': matchday,
+                  'homeTeam': {'name': home_name, 'crest': home_logo},
+                  'awayTeam': {'name': away_name, 'crest': away_logo},
+                  'score': {
+                      'winner':   winner,
+                      'fullTime': {'home': home_score, 'away': away_score},
+                  },
+              })
+
+          result.sort(key=lambda x: x['utcDate'])
+
+          finished_count = sum(1 for m in result if m['status'] == 'FINISHED')
+          timed_count    = sum(1 for m in result if m['status'] in ('TIMED', 'SCHEDULED'))
+          print(f'Output: {len(result)} matches ({finished_count} finished, {timed_count} upcoming)')
+
+          with open('matches.json', 'w') as f:
+              json.dump(result, f, indent=2)
+          print('Saved matches.json')
+          EOF
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add matches.json
+          git diff --staged --quiet || (git commit -m "chore: update match data" && git push)
