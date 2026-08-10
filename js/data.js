@@ -38,46 +38,39 @@ const SCORING = { WIN: 3, DRAW: 1 };
 // cost  = draft credit value (budget is 100, pick 4 clubs)
 // tier  = display grouping (1 = title contenders … 6 = promoted/underdogs)
 //
-// Costs are derived from Compare.bet's supercomputer-predicted 2026/27 final
-// table (published via GiveMeSport, 10,000-simulation Elo/market model):
-// https://www.givemesport.com/supercomputer-predicts-2026-27-premier-league-table/
-//
-// Predicted points are mapped onto cost through a convex curve —
-// cost = 3 + 52 * ((pts - 19) / (88 - 19)) ^ 1.8 — rather than a straight
-// linear scale. A linear mapping still lets the four best-predicted clubs
-// (Arsenal/City/Liverpool/Chelsea) be "the" obvious pick every time; the
-// convexity pushes their combined cost to ~177 (vs. a 100 budget for 4
-// clubs), so stacking multiple elites is deliberately unaffordable and
-// entries have to trade quality for value instead of all converging on the
-// same top-4 portfolio. Re-run this if the group agrees final rules that
-// change scoring (e.g. position bonuses) enough to warrant re-pricing.
+// STILL PROVISIONAL — these are the group's pre-call discussion-draft prices
+// (ellwsn's swaps on top of Matt's list, circulated ahead of the 2026-08-10
+// rules call: Chelsea/Liverpool swapped, Villa/Man Utd swapped, Newcastle
+// moved below Fulham, Sunderland moved above Everton). They replace the
+// earlier supercomputer-model pricing and may change again once the call
+// actually happens — see SCORING.md.
 const TEAM_DATA = {
-  // Tier 1 — Title Contenders (predicted 1st–4th)
-  'Arsenal':                 { cost: 55, tier: 1 },
-  'Manchester City':         { cost: 51, tier: 1 },
-  'Liverpool':               { cost: 38, tier: 1 },
-  'Chelsea':                 { cost: 33, tier: 1 },
-  // Tier 2 — European Hopefuls (predicted 5th–8th)
-  'Aston Villa':             { cost: 30, tier: 2 },
-  'Manchester United':       { cost: 26, tier: 2 },
-  'Newcastle United':        { cost: 23, tier: 2 },
-  'Tottenham Hotspur':       { cost: 21, tier: 2 },
-  // Tier 3 — Upper Mid-table (predicted 9th–11th)
-  'Brighton & Hove Albion':  { cost: 18, tier: 3 },
-  'Crystal Palace':          { cost: 16, tier: 3 },
-  'AFC Bournemouth':         { cost: 15, tier: 3 },
-  // Tier 4 — Mid-table (predicted 12th–14th)
-  'Brentford':               { cost: 13, tier: 4 },
-  'Fulham':                  { cost: 12, tier: 4 },
-  'Everton':                 { cost: 11, tier: 4 },
-  // Tier 5 — Relegation Battle (predicted 15th–17th)
-  'Leeds United':            { cost:  9, tier: 5 },
-  'Nottingham Forest':       { cost:  8, tier: 5 },
-  'Sunderland':              { cost:  7, tier: 5 },
-  // Tier 6 — Promoted Underdogs (predicted 18th–20th)
-  'Ipswich Town':            { cost:  6, tier: 6 },
-  'Coventry City':           { cost:  4, tier: 6 },
-  'Hull City':               { cost:  3, tier: 6 },
+  // Tier 1 — Title Contenders
+  'Arsenal':                 { cost: 43, tier: 1 },
+  'Manchester City':         { cost: 41, tier: 1 },
+  'Chelsea':                 { cost: 38, tier: 1 },
+  'Liverpool':               { cost: 35, tier: 1 },
+  // Tier 2 — European Hopefuls
+  'Manchester United':       { cost: 33, tier: 2 },
+  'Aston Villa':             { cost: 31, tier: 2 },
+  'Tottenham Hotspur':       { cost: 29, tier: 2 },
+  'Brighton & Hove Albion':  { cost: 27, tier: 2 },
+  // Tier 3 — Upper Mid-table
+  'Crystal Palace':          { cost: 25, tier: 3 },
+  'AFC Bournemouth':         { cost: 23, tier: 3 },
+  'Brentford':               { cost: 22, tier: 3 },
+  // Tier 4 — Mid-table
+  'Fulham':                  { cost: 20, tier: 4 },
+  'Newcastle United':        { cost: 19, tier: 4 },
+  'Sunderland':              { cost: 18, tier: 4 },
+  // Tier 5 — Relegation Battle
+  'Everton':                 { cost: 17, tier: 5 },
+  'Leeds United':            { cost: 16, tier: 5 },
+  'Nottingham Forest':       { cost: 15, tier: 5 },
+  // Tier 6 — Promoted Underdogs
+  'Ipswich Town':            { cost: 13, tier: 6 },
+  'Coventry City':           { cost: 11, tier: 6 },
+  'Hull City':               { cost:  9, tier: 6 },
 };
 
 // ── TIER LABELS ───────────────────────────────────────────────────────────────
