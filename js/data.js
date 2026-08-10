@@ -36,10 +36,15 @@ function ordinal(n) {
 }
 
 // ── SCORING RULES ─────────────────────────────────────────────────────────────
-// PROVISIONAL — standard football points (Win 3 / Draw 1 / Loss 0), summed
-// across the full 38-game season. Placeholder pending the rules call — see
-// SCORING.md for notes on what's still to be decided (position bonuses etc).
-const SCORING = { WIN: 3, DRAW: 1 };
+// FINAL — agreed on the 2026-08-10 rules call (+ follow-up confirming the
+// clean sheet / goal bonuses). Full breakdown in SCORING.md:
+//   Win            → WIN pts
+//   Draw           → DRAW pts
+//   Clean sheet    → CLEAN_SHEET pts per match conceding 0
+//   Goal bonus     → 1 pt per goal scored above GOAL_BONUS_THRESHOLD in a
+//                    single match (e.g. a 5-goal game = +2)
+//   + final league-position bonus (see positionBonus() in scoring.js)
+const SCORING = { WIN: 3, DRAW: 1, CLEAN_SHEET: 1, GOAL_BONUS_THRESHOLD: 3 };
 
 // ── CLUB CATALOGUE ────────────────────────────────────────────────────────────
 // cost             = draft credit value (budget is 100, pick 4 clubs)
@@ -48,11 +53,10 @@ const SCORING = { WIN: 3, DRAW: 1 };
 //                     alongside cost. Drives the final-league-position bonus
 //                     in scoring.js — see SCORING.md.
 //
-// STILL PROVISIONAL — these are the group's pre-call discussion-draft prices
-// (ellwsn's swaps on top of Matt's list, circulated ahead of the 2026-08-10
-// rules call: Chelsea/Liverpool swapped, Villa/Man Utd swapped, Newcastle
-// moved below Fulham, Sunderland moved above Everton). They replace the
-// earlier supercomputer-model pricing and may change again — see SCORING.md.
+// FINAL — the group's draft prices (ellwsn's swaps on top of Matt's list,
+// circulated ahead of the 2026-08-10 rules call: Chelsea/Liverpool swapped,
+// Villa/Man Utd swapped, Newcastle moved below Fulham, Sunderland moved
+// above Everton) are confirmed as the final costs — see SCORING.md.
 const TEAM_DATA = {
   // Tier 1 — Title Contenders
   'Arsenal':                 { cost: 43, tier: 1, predictedPosition:  1 },

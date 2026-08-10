@@ -1,11 +1,10 @@
 # ⚽ Premier League 2026/27 Portfolio Challenge — Scoring Rules
 
-> **Status: PARTIALLY FINALIZED.** Match points, cup scope, and the final
-> league-position bonus were agreed on the 2026-08-10 rules call and are live
-> in code. Clean sheet / goal bonuses and the draft club prices are still
-> open — see the sections below.
+> **Status: FINAL.** All rules agreed on the 2026-08-10 rules call (plus a
+> same-day follow-up confirming clean sheet/goal bonuses, club prices, and
+> refresh cadence) are live in code.
 
-## 📋 Match Results (live in code)
+## 📋 Match Results
 
 | Result | Points |
 |--------|--------|
@@ -22,7 +21,17 @@ to filter in code.
 - **4 clubs per entry** with a budget of **100 credits.**
 - Points from all 4 clubs are added together for your total score.
 
-## 🏁 Final League Position Bonus (live in code, agreed 2026-08-10)
+## 🎯 Bonus Points
+
+| Result / Event                          | Points                        |
+|------------------------------------------|--------------------------------|
+| Clean sheet                               | +1 pt per match conceding 0 (win or draw) |
+| Goals scored over 3 in a single game      | +1 pt per goal above 3 (e.g. a 5-goal game = +2) |
+
+Both computed per match in `teamStats()` in `js/scoring.js`
+(`SCORING.CLEAN_SHEET`, `SCORING.GOAL_BONUS_THRESHOLD`).
+
+## 🏁 Final League Position Bonus
 
 - 1st place is worth **20 pts**, 20th place is worth **1 pt**
   (`basePts = 21 - finishPosition`).
@@ -36,28 +45,23 @@ to filter in code.
 - Implemented in `positionBonus()` in `js/scoring.js`, and only actually
   added to a club's total once the season is fully complete (all 380
   fixtures `FINISHED`) — it's a *final* position bonus, not a live one. The
-  **Teams tab** has a new **League Pos** column that tracks live position vs.
+  **Teams tab** has a **League Pos** column that tracks live position vs.
   predicted throughout the season regardless, so the group can watch it
   build even before it counts.
 - If this formula reading turns out to not match what was actually agreed
   on the call, flag it — the delta/base split above was the most literal
   reading of "lose 4 points" but is easy to adjust in `positionBonus()`.
 
-## 🗣️ Still Open / Discussion Draft (not yet wired into code)
+## 💰 Club Prices
 
-Proposal circulated by ellwsn ahead of the 2026-08-10 call — not decided on
-the call, so still not implemented:
+`js/data.js` (`TEAM_DATA`) costs are the group's final draft prices
+(ellwsn's swaps on top of Matt's list: Chelsea/Liverpool swapped,
+Villa/Man Utd swapped, Newcastle moved below Fulham, Sunderland moved above
+Everton). Confirmed final — not the earlier supercomputer-model pricing.
 
-| Result / Event                          | Points                        |
-|------------------------------------------|--------------------------------|
-| Clean sheet                               | +1 pt                         |
-| Goals scored over 3 in a single game      | +1 pt per goal above 3 (e.g. a 5-goal game = +2) |
+## 🔄 Refresh Cadence
 
-## 💡 Still Open
-
-- `js/data.js` (`TEAM_DATA`) costs are currently the group's pre-call
-  discussion-draft prices (ellwsn's swaps on Matt's list) — not confirmed as
-  final.
-- How often should the leaderboard refresh (the World Cup version polled
-  matches.json every 30 minutes via GitHub Actions — this project already
-  does the same, see `.github/workflows/update-matches.yml`)?
+Confirmed: every 30 minutes, matching the World Cup version. Already
+implemented via `.github/workflows/update-matches.yml`, which polls ESPN and
+commits `matches.json` on a `*/30 * * * *` cron schedule; the front end
+re-fetches on the same interval (`js/app.js`).

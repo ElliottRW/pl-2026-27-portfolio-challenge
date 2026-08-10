@@ -38,8 +38,9 @@ function renderTeams() {
     for (const [name, data] of teams) {
       const s = _matches
         ? teamStats(name, _matches)
-        : { wins: 0, draws: 0, losses: 0, total: 0, position: {}, seasonComplete: false };
+        : { wins: 0, draws: 0, losses: 0, total: 0, bonusPts: 0, positionPts: 0, matchPts: 0, position: {}, seasonComplete: false };
       const ppc = ptsPerCredit(s.total, data.cost);
+      const ptsTip = `Match ${s.matchPts} + bonus ${s.bonusPts} (${s.cleanSheets || 0} clean sheet${s.cleanSheets === 1 ? '' : 's'}, +${s.goalBonusPts || 0} goal bonus) + position ${s.positionPts}`;
 
       // Tooltip showing who picked this club
       const pickers = _participants ? _participants.filter(p => p.teams.includes(name)).map(p => p.name) : [];
@@ -54,7 +55,7 @@ function renderTeams() {
         <td style="text-align:center">${s.draws}</td>
         <td style="text-align:center">${s.losses}</td>
         ${renderPositionCell(s, anyPlayed)}
-        <td><span class="pts-pill">${s.total}</span></td>
+        <td><span class="pts-pill" title="${esc(ptsTip)}">${s.total}</span></td>
         <td style="text-align:center;color:var(--muted);font-size:0.8rem">${ppc > 0 ? ppc.toFixed(2) : '—'}</td>
       </tr>`);
     }

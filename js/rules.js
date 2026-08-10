@@ -15,10 +15,10 @@ function renderRules() {
       </p>
 
       <div class="banner banner-warn" style="margin-bottom:1.25rem">
-        ⚠️ Match points, cup scope, and the final league-position bonus were
-        agreed on the 2026-08-10 rules call and are live below. Clean
-        sheet/goal bonuses and club prices are still being discussed — see
-        <code>SCORING.md</code> in the repo for notes.
+        ✅ Rules finalized on the 2026-08-10 rules call (match points, cup
+        scope, position bonus, clean sheet/goal bonuses, club prices, and
+        refresh cadence). See <code>SCORING.md</code> in the repo for the
+        full history.
       </div>
 
       <div class="rules-section">
@@ -32,6 +32,18 @@ function renderRules() {
           </tbody>
         </table>
         <p class="rules-note">Standard football points, mirroring the real Premier League table. Each club plays 38 Premier League matches across the season — cup competitions (FA Cup, League Cup, Europe) don't count.</p>
+      </div>
+
+      <div class="rules-section">
+        <h3 class="rules-heading">Bonus Points</h3>
+        <table class="rules-table">
+          <thead><tr><th>Result / Event</th><th>Points</th></tr></thead>
+          <tbody>
+            <tr><td>Clean sheet</td><td class="pts">+1 pt</td></tr>
+            <tr><td>Goals scored over 3 in a single game</td><td class="pts">+1 pt per goal above 3</td></tr>
+          </tbody>
+        </table>
+        <p class="rules-note">Clean sheet applies per match your club concedes 0 (win or draw). Goal bonus is per match, not cumulative across the season — e.g. a 5&ndash;0 win is +2 (5&minus;3), on top of the clean sheet.</p>
       </div>
 
       <div class="rules-section">

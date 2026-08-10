@@ -55,9 +55,16 @@ function getStandings(matches) {
   return _standingsCache.table;
 }
 
-/** True once every fixture in the season has been played. */
+/**
+ * True once every fixture in the season has been played. Requires the full
+ * fixture count (each of the 20 clubs plays each other twice), not just
+ * "everything in whatever array we got is FINISHED" — guards against the
+ * position bonus firing early on a partial/truncated matches.json.
+ */
 function seasonComplete(matches) {
-  return matches.length > 0 && matches.every(m => m.status === 'FINISHED');
+  const clubCount = Object.keys(TEAM_DATA).length;
+  const expectedFixtures = clubCount * (clubCount - 1);
+  return matches.length === expectedFixtures && matches.every(m => m.status === 'FINISHED');
 }
 
 /**
@@ -88,12 +95,14 @@ function positionBonus(displayName, standings) {
  * match objects (as produced by .github/workflows/update-matches.yml).
  *
  * Scoring rules (defined in SCORING in data.js):
- *   Win  → SCORING.WIN  pts
- *   Draw → SCORING.DRAW pts
- *   Loss → 0 pts
+ *   Win          → SCORING.WIN  pts
+ *   Draw         → SCORING.DRAW pts
+ *   Loss         → 0 pts
+ *   Clean sheet  → SCORING.CLEAN_SHEET pts per match conceding 0 (win or draw)
+ *   Goal bonus   → 1 pt per goal scored above SCORING.GOAL_BONUS_THRESHOLD in
+ *                  a single match (e.g. a 5-goal game = +2)
  *   Final league position bonus → see positionBonus() above (only once
- *   seasonComplete). Clean sheets / goal bonuses are still under discussion
- *   — see SCORING.md — and are deliberately not implemented yet.
+ *   seasonComplete).
  */
 function teamStats(displayName, matches) {
   const mine = matches.filter(m =>
@@ -101,16 +110,22 @@ function teamStats(displayName, matches) {
     getDisplayName(m.awayTeam?.name) === displayName
   );
 
-  let wins = 0, draws = 0, losses = 0;
+  let wins = 0, draws = 0, losses = 0, cleanSheets = 0, goalBonusPts = 0;
   for (const m of mine) {
     if (m.status !== 'FINISHED' || !m.score?.winner) continue;
     const isHome = getDisplayName(m.homeTeam?.name) === displayName;
     if (m.score.winner === 'DRAW')                          draws++;
     else if ((m.score.winner === 'HOME_TEAM') === isHome)   wins++;
     else                                                    losses++;
+
+    const goalsFor     = isHome ? m.score.fullTime?.home : m.score.fullTime?.away;
+    const goalsAgainst = isHome ? m.score.fullTime?.away : m.score.fullTime?.home;
+    if (goalsAgainst === 0) cleanSheets++;
+    if (goalsFor > SCORING.GOAL_BONUS_THRESHOLD) goalBonusPts += goalsFor - SCORING.GOAL_BONUS_THRESHOLD;
   }
 
   const matchPts = wins * SCORING.WIN + draws * SCORING.DRAW;
+  const bonusPts = cleanSheets * SCORING.CLEAN_SHEET + goalBonusPts;
 
   const standings = getStandings(matches);
   const position   = positionBonus(displayName, standings);
@@ -119,8 +134,9 @@ function teamStats(displayName, matches) {
 
   return {
     wins, draws, losses, matchPts,
+    cleanSheets, goalBonusPts, bonusPts,
     position, seasonComplete: complete, positionPts,
-    total: matchPts + positionPts,
+    total: matchPts + bonusPts + positionPts,
   };
 }
 
