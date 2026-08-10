@@ -205,6 +205,18 @@ tbody tr:hover td { background: #f8f9ff; }
   font-size: 0.78rem;
   font-weight: 700;
 }
+.pos-badge {
+  display: inline-block;
+  border-radius: 8px;
+  padding: 0.05rem 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  margin-left: 0.25rem;
+  cursor: default;
+}
+.pos-badge.up   { background: var(--green-bg); color: var(--green); }
+.pos-badge.down { background: var(--red-bg);   color: var(--red);   }
+.pos-badge.even { background: var(--bg);       color: var(--muted); }
 .stage-tag {
   display: inline-flex;
   align-items: center;

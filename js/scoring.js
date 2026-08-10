@@ -1,18 +1,99 @@
 'use strict';
 
+// ── LEAGUE STANDINGS ─────────────────────────────────────────────────────────
+// Real Premier League table (not the portfolio's win/draw/loss weighting —
+// SCORING may one day diverge from classic football scoring, but the table
+// itself never does). Only FINISHED matches count. Premier League fixtures
+// only — matches.json is sourced from ESPN's `eng.1` competition feed, so
+// cup games never appear here; the group agreed cups are out of scope.
+//
+// Tie-break: points → goal difference → goals for → name (alphabetical,
+// as a simplified stand-in for head-to-head once real tiebreaks matter).
+
+let _standingsCache = { matches: null, table: null };
+
+function computeStandings(matches) {
+  const table = {};
+  for (const name of Object.keys(TEAM_DATA)) {
+    table[name] = { name, played: 0, won: 0, drawn: 0, lost: 0, gf: 0, ga: 0, pts: 0 };
+  }
+
+  for (const m of matches) {
+    if (m.status !== 'FINISHED' || !m.score?.winner) continue;
+    const home = getDisplayName(m.homeTeam?.name);
+    const away = getDisplayName(m.awayTeam?.name);
+    const hg = m.score.fullTime?.home;
+    const ag = m.score.fullTime?.away;
+    if (!table[home] || !table[away] || hg == null || ag == null) continue;
+
+    table[home].played++; table[away].played++;
+    table[home].gf += hg;  table[home].ga += ag;
+    table[away].gf += ag;  table[away].ga += hg;
+
+    if (m.score.winner === 'DRAW') {
+      table[home].drawn++; table[home].pts += 1;
+      table[away].drawn++; table[away].pts += 1;
+    } else if (m.score.winner === 'HOME_TEAM') {
+      table[home].won++;   table[home].pts += 3;
+      table[away].lost++;
+    } else {
+      table[away].won++;   table[away].pts += 3;
+      table[home].lost++;
+    }
+  }
+
+  return Object.values(table)
+    .map(t => ({ ...t, gd: t.gf - t.ga }))
+    .sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf || a.name.localeCompare(b.name));
+}
+
+/** Standings for a given matches array, memoised on array identity. */
+function getStandings(matches) {
+  if (_standingsCache.matches !== matches) {
+    _standingsCache = { matches, table: computeStandings(matches) };
+  }
+  return _standingsCache.table;
+}
+
+/** True once every fixture in the season has been played. */
+function seasonComplete(matches) {
+  return matches.length > 0 && matches.every(m => m.status === 'FINISHED');
+}
+
+/**
+ * Final-league-position bonus, agreed on the 2026-08-10 rules call:
+ *   - 1st place is worth 20 pts, 20th is worth 1 pt (basePts = 21 - position).
+ *   - Blended with the pre-season predicted position: finishing better than
+ *     predicted adds points, finishing worse subtracts them, 1 pt per place
+ *     (delta = predictedPosition - actualPosition).
+ *   e.g. Arsenal predicted 1st, finish 5th → basePts 16, delta -4 → 12 pts.
+ * Only actually awarded once the season is over (seasonComplete) — see
+ * SCORING.md for why it's a *final* position bonus, not a live one.
+ */
+function positionBonus(displayName, standings) {
+  const actualPos    = standings.findIndex(t => t.name === displayName) + 1;
+  const predictedPos = TEAM_DATA[displayName]?.predictedPosition ?? null;
+  if (!actualPos || !predictedPos) {
+    return { actualPos: actualPos || null, predictedPos, basePts: 0, delta: 0, total: 0 };
+  }
+  const basePts = 21 - actualPos;
+  const delta   = predictedPos - actualPos;
+  return { actualPos, predictedPos, basePts, delta, total: basePts + delta };
+}
+
 // ── SCORING CALCULATOR ────────────────────────────────────────────────────────
 
 /**
  * Calculate a club's match record and total portfolio points from a list of
  * match objects (as produced by .github/workflows/update-matches.yml).
  *
- * Scoring rules (defined in SCORING in data.js) — PROVISIONAL:
+ * Scoring rules (defined in SCORING in data.js):
  *   Win  → SCORING.WIN  pts
  *   Draw → SCORING.DRAW pts
  *   Loss → 0 pts
- *
- * No end-of-season position bonuses yet — add them here once the rules call
- * has settled on final scoring (see SCORING.md).
+ *   Final league position bonus → see positionBonus() above (only once
+ *   seasonComplete). Clean sheets / goal bonuses are still under discussion
+ *   — see SCORING.md — and are deliberately not implemented yet.
  */
 function teamStats(displayName, matches) {
   const mine = matches.filter(m =>
@@ -31,7 +112,16 @@ function teamStats(displayName, matches) {
 
   const matchPts = wins * SCORING.WIN + draws * SCORING.DRAW;
 
-  return { wins, draws, losses, matchPts, total: matchPts };
+  const standings = getStandings(matches);
+  const position   = positionBonus(displayName, standings);
+  const complete   = seasonComplete(matches);
+  const positionPts = complete ? position.total : 0;
+
+  return {
+    wins, draws, losses, matchPts,
+    position, seasonComplete: complete, positionPts,
+    total: matchPts + positionPts,
+  };
 }
 
 /** Points scored per credit spent — used to rank value-for-money picks. */

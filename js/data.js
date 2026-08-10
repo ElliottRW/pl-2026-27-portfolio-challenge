@@ -28,6 +28,13 @@ function timeAgo(ts) {
   return `${Math.floor(s / 3600)}h ago`;
 }
 
+/** "1" → "1st", "5" → "5th", etc. */
+function ordinal(n) {
+  const suffixes = ['th', 'st', 'nd', 'rd'];
+  const v = n % 100;
+  return n + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]);
+}
+
 // ── SCORING RULES ─────────────────────────────────────────────────────────────
 // PROVISIONAL — standard football points (Win 3 / Draw 1 / Loss 0), summed
 // across the full 38-game season. Placeholder pending the rules call — see
@@ -35,42 +42,44 @@ function timeAgo(ts) {
 const SCORING = { WIN: 3, DRAW: 1 };
 
 // ── CLUB CATALOGUE ────────────────────────────────────────────────────────────
-// cost  = draft credit value (budget is 100, pick 4 clubs)
-// tier  = display grouping (1 = title contenders … 6 = promoted/underdogs)
+// cost             = draft credit value (budget is 100, pick 4 clubs)
+// tier             = display grouping (1 = title contenders … 6 = promoted/underdogs)
+// predictedPosition = the group's pre-season predicted finish (1-20), agreed
+//                     alongside cost. Drives the final-league-position bonus
+//                     in scoring.js — see SCORING.md.
 //
 // STILL PROVISIONAL — these are the group's pre-call discussion-draft prices
 // (ellwsn's swaps on top of Matt's list, circulated ahead of the 2026-08-10
 // rules call: Chelsea/Liverpool swapped, Villa/Man Utd swapped, Newcastle
 // moved below Fulham, Sunderland moved above Everton). They replace the
-// earlier supercomputer-model pricing and may change again once the call
-// actually happens — see SCORING.md.
+// earlier supercomputer-model pricing and may change again — see SCORING.md.
 const TEAM_DATA = {
   // Tier 1 — Title Contenders
-  'Arsenal':                 { cost: 43, tier: 1 },
-  'Manchester City':         { cost: 41, tier: 1 },
-  'Chelsea':                 { cost: 38, tier: 1 },
-  'Liverpool':               { cost: 35, tier: 1 },
+  'Arsenal':                 { cost: 43, tier: 1, predictedPosition:  1 },
+  'Manchester City':         { cost: 41, tier: 1, predictedPosition:  2 },
+  'Chelsea':                 { cost: 38, tier: 1, predictedPosition:  3 },
+  'Liverpool':               { cost: 35, tier: 1, predictedPosition:  4 },
   // Tier 2 — European Hopefuls
-  'Manchester United':       { cost: 33, tier: 2 },
-  'Aston Villa':             { cost: 31, tier: 2 },
-  'Tottenham Hotspur':       { cost: 29, tier: 2 },
-  'Brighton & Hove Albion':  { cost: 27, tier: 2 },
+  'Manchester United':       { cost: 33, tier: 2, predictedPosition:  5 },
+  'Aston Villa':             { cost: 31, tier: 2, predictedPosition:  6 },
+  'Tottenham Hotspur':       { cost: 29, tier: 2, predictedPosition:  7 },
+  'Brighton & Hove Albion':  { cost: 27, tier: 2, predictedPosition:  8 },
   // Tier 3 — Upper Mid-table
-  'Crystal Palace':          { cost: 25, tier: 3 },
-  'AFC Bournemouth':         { cost: 23, tier: 3 },
-  'Brentford':               { cost: 22, tier: 3 },
+  'Crystal Palace':          { cost: 25, tier: 3, predictedPosition:  9 },
+  'AFC Bournemouth':         { cost: 23, tier: 3, predictedPosition: 10 },
+  'Brentford':               { cost: 22, tier: 3, predictedPosition: 11 },
   // Tier 4 — Mid-table
-  'Fulham':                  { cost: 20, tier: 4 },
-  'Newcastle United':        { cost: 19, tier: 4 },
-  'Sunderland':              { cost: 18, tier: 4 },
+  'Fulham':                  { cost: 20, tier: 4, predictedPosition: 12 },
+  'Newcastle United':        { cost: 19, tier: 4, predictedPosition: 13 },
+  'Sunderland':              { cost: 18, tier: 4, predictedPosition: 14 },
   // Tier 5 — Relegation Battle
-  'Everton':                 { cost: 17, tier: 5 },
-  'Leeds United':            { cost: 16, tier: 5 },
-  'Nottingham Forest':       { cost: 15, tier: 5 },
+  'Everton':                 { cost: 17, tier: 5, predictedPosition: 15 },
+  'Leeds United':            { cost: 16, tier: 5, predictedPosition: 16 },
+  'Nottingham Forest':       { cost: 15, tier: 5, predictedPosition: 17 },
   // Tier 6 — Promoted Underdogs
-  'Ipswich Town':            { cost: 13, tier: 6 },
-  'Coventry City':           { cost: 11, tier: 6 },
-  'Hull City':               { cost:  9, tier: 6 },
+  'Ipswich Town':            { cost: 13, tier: 6, predictedPosition: 18 },
+  'Coventry City':           { cost: 11, tier: 6, predictedPosition: 19 },
+  'Hull City':               { cost:  9, tier: 6, predictedPosition: 20 },
 };
 
 // ── TIER LABELS ───────────────────────────────────────────────────────────────
