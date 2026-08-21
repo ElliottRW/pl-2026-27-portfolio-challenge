@@ -14,13 +14,6 @@ function renderRules() {
         Points from all 4 clubs are added together across the 2026/27 season.
       </p>
 
-      <div class="banner banner-warn" style="margin-bottom:1.25rem">
-        ✅ Rules finalized on the 2026-08-10 rules call (match points, cup
-        scope, position bonus, clean sheet/goal bonuses, club prices, and
-        refresh cadence). See <code>SCORING.md</code> in the repo for the
-        full history.
-      </div>
-
       <div class="rules-section">
         <h3 class="rules-heading">Match Results</h3>
         <table class="rules-table">
