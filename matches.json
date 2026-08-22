@@ -107,7 +107,7 @@
   {
     "id": "401879321",
     "utcDate": "2026-08-22T16:30Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 1,
     "homeTeam": {
       "name": "Brentford",
@@ -118,10 +118,10 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 0
       }
     }
   },
