@@ -23,7 +23,7 @@
   {
     "id": "401879322",
     "utcDate": "2026-08-22T11:30Z",
-    "status": "IN_PLAY",
+    "status": "FINISHED",
     "matchday": 1,
     "homeTeam": {
       "name": "Hull City",
@@ -34,10 +34,10 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 0
       }
     }
   },
