@@ -65,7 +65,7 @@
   {
     "id": "401879299",
     "utcDate": "2026-08-22T14:00Z",
-    "status": "IN_PLAY",
+    "status": "TIMED",
     "matchday": 1,
     "homeTeam": {
       "name": "Ipswich Town",
