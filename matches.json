@@ -170,7 +170,7 @@
   {
     "id": "401879319",
     "utcDate": "2026-08-23T15:30Z",
-    "status": "IN_PLAY",
+    "status": "TIMED",
     "matchday": 1,
     "homeTeam": {
       "name": "Newcastle United",
