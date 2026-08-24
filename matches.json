@@ -191,7 +191,7 @@
   {
     "id": "401879318",
     "utcDate": "2026-08-24T19:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 1,
     "homeTeam": {
       "name": "Fulham",
@@ -202,10 +202,10 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 3
       }
     }
   },
