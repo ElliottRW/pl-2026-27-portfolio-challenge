@@ -191,7 +191,7 @@
   {
     "id": "401879318",
     "utcDate": "2026-08-24T19:00Z",
-    "status": "PAUSED",
+    "status": "TIMED",
     "matchday": 1,
     "homeTeam": {
       "name": "Fulham",
