@@ -212,7 +212,7 @@
   {
     "id": "401879294",
     "utcDate": "2026-08-28T19:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 2,
     "homeTeam": {
       "name": "Crystal Palace",
@@ -223,10 +223,10 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 4
       }
     }
   },
