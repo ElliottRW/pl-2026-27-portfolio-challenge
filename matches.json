@@ -254,7 +254,7 @@
   {
     "id": "401879296",
     "utcDate": "2026-08-29T14:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 2,
     "homeTeam": {
       "name": "AFC Bournemouth",
@@ -265,17 +265,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       }
     }
   },
   {
     "id": "401879316",
     "utcDate": "2026-08-29T14:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 2,
     "homeTeam": {
       "name": "Coventry City",
@@ -286,17 +286,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/306.png"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       }
     }
   },
   {
     "id": "401879312",
     "utcDate": "2026-08-29T16:30Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 2,
     "homeTeam": {
       "name": "Tottenham Hotspur",
@@ -307,10 +307,10 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 2
       }
     }
   },
