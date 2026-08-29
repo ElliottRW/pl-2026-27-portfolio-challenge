@@ -945,27 +945,6 @@
     }
   },
   {
-    "id": "401879272",
-    "utcDate": "2026-09-19T14:00Z",
-    "status": "TIMED",
-    "matchday": 5,
-    "homeTeam": {
-      "name": "Manchester City",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png"
-    },
-    "awayTeam": {
-      "name": "Sunderland",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/366.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
     "id": "401879271",
     "utcDate": "2026-09-19T14:00Z",
     "status": "TIMED",
@@ -1019,6 +998,27 @@
     "awayTeam": {
       "name": "Liverpool",
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401879272",
+    "utcDate": "2026-09-20T13:00Z",
+    "status": "TIMED",
+    "matchday": 5,
+    "homeTeam": {
+      "name": "Manchester City",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png"
+    },
+    "awayTeam": {
+      "name": "Sunderland",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/366.png"
     },
     "score": {
       "winner": null,
