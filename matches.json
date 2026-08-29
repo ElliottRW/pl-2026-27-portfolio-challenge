@@ -233,7 +233,7 @@
   {
     "id": "401879314",
     "utcDate": "2026-08-29T11:30Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 2,
     "homeTeam": {
       "name": "Liverpool",
@@ -244,10 +244,10 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/393.png"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 2
       }
     }
   },
