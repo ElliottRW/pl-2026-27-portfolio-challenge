@@ -401,7 +401,7 @@
   {
     "id": "401879295",
     "utcDate": "2026-08-31T19:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 2,
     "homeTeam": {
       "name": "Aston Villa",
@@ -412,10 +412,10 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       }
     }
   },
