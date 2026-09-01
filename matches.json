@@ -924,27 +924,6 @@
     }
   },
   {
-    "id": "401879273",
-    "utcDate": "2026-09-19T14:00Z",
-    "status": "TIMED",
-    "matchday": 5,
-    "homeTeam": {
-      "name": "Leeds United",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png"
-    },
-    "awayTeam": {
-      "name": "Crystal Palace",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
     "id": "401879271",
     "utcDate": "2026-09-19T14:00Z",
     "status": "TIMED",
@@ -998,6 +977,27 @@
     "awayTeam": {
       "name": "Liverpool",
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401879273",
+    "utcDate": "2026-09-20T13:00Z",
+    "status": "TIMED",
+    "matchday": 5,
+    "homeTeam": {
+      "name": "Leeds United",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png"
+    },
+    "awayTeam": {
+      "name": "Crystal Palace",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png"
     },
     "score": {
       "winner": null,
@@ -1554,27 +1554,6 @@
     }
   },
   {
-    "id": "401878765",
-    "utcDate": "2026-10-24T14:00Z",
-    "status": "TIMED",
-    "matchday": 8,
-    "homeTeam": {
-      "name": "Liverpool",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png"
-    },
-    "awayTeam": {
-      "name": "Brighton & Hove Albion",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
     "id": "401878767",
     "utcDate": "2026-10-24T16:30Z",
     "status": "TIMED",
@@ -1628,6 +1607,27 @@
     "awayTeam": {
       "name": "Brentford",
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/337.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401878765",
+    "utcDate": "2026-10-25T14:00Z",
+    "status": "TIMED",
+    "matchday": 8,
+    "homeTeam": {
+      "name": "Liverpool",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png"
+    },
+    "awayTeam": {
+      "name": "Brighton & Hove Albion",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png"
     },
     "score": {
       "winner": null,
@@ -1828,7 +1828,7 @@
   },
   {
     "id": "401879250",
-    "utcDate": "2026-11-01T14:00Z",
+    "utcDate": "2026-10-31T20:00Z",
     "status": "TIMED",
     "matchday": 9,
     "homeTeam": {
