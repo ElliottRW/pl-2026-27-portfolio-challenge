@@ -422,7 +422,7 @@
   {
     "id": "401879288",
     "utcDate": "2026-09-04T19:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "homeTeam": {
       "name": "Ipswich Town",
@@ -433,10 +433,10 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 2
       }
     }
   },
