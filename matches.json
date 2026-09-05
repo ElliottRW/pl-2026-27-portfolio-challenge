@@ -464,7 +464,7 @@
   {
     "id": "401879311",
     "utcDate": "2026-09-05T14:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "homeTeam": {
       "name": "Brentford",
@@ -475,17 +475,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/366.png"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       }
     }
   },
   {
     "id": "401879290",
     "utcDate": "2026-09-05T14:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "homeTeam": {
       "name": "Brighton & Hove Albion",
@@ -496,17 +496,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       }
     }
   },
   {
     "id": "401879289",
     "utcDate": "2026-09-05T14:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "homeTeam": {
       "name": "Fulham",
@@ -517,17 +517,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 3
       }
     }
   },
   {
     "id": "401879287",
     "utcDate": "2026-09-05T14:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "homeTeam": {
       "name": "Manchester City",
@@ -538,17 +538,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/388.png"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       }
     }
   },
   {
     "id": "401878780",
     "utcDate": "2026-09-05T14:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "homeTeam": {
       "name": "Nottingham Forest",
@@ -559,10 +559,10 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       }
     }
   },
