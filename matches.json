@@ -611,7 +611,7 @@
   {
     "id": "401879292",
     "utcDate": "2026-09-06T15:30Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "homeTeam": {
       "name": "Arsenal",
@@ -622,10 +622,10 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 1
       }
     }
   },
