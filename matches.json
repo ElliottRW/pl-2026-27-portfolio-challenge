@@ -3361,7 +3361,7 @@
   },
   {
     "id": "401878737",
-    "utcDate": "2026-12-26T15:00Z",
+    "utcDate": "2026-12-26T12:30Z",
     "status": "TIMED",
     "matchday": 17,
     "homeTeam": {
@@ -3371,48 +3371,6 @@
     "awayTeam": {
       "name": "Leeds United",
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
-    "id": "401878736",
-    "utcDate": "2026-12-26T15:00Z",
-    "status": "TIMED",
-    "matchday": 17,
-    "homeTeam": {
-      "name": "Coventry City",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/388.png"
-    },
-    "awayTeam": {
-      "name": "Chelsea",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
-    "id": "401878735",
-    "utcDate": "2026-12-26T15:00Z",
-    "status": "TIMED",
-    "matchday": 17,
-    "homeTeam": {
-      "name": "Crystal Palace",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png"
-    },
-    "awayTeam": {
-      "name": "Arsenal",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png"
     },
     "score": {
       "winner": null,
@@ -3465,27 +3423,6 @@
     }
   },
   {
-    "id": "401878733",
-    "utcDate": "2026-12-26T15:00Z",
-    "status": "TIMED",
-    "matchday": 17,
-    "homeTeam": {
-      "name": "Hull City",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/306.png"
-    },
-    "awayTeam": {
-      "name": "Liverpool",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
     "id": "401879196",
     "utcDate": "2026-12-26T15:00Z",
     "status": "TIMED",
@@ -3497,48 +3434,6 @@
     "awayTeam": {
       "name": "Brentford",
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/337.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
-    "id": "401879195",
-    "utcDate": "2026-12-26T15:00Z",
-    "status": "TIMED",
-    "matchday": 17,
-    "homeTeam": {
-      "name": "Manchester United",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png"
-    },
-    "awayTeam": {
-      "name": "Nottingham Forest",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/393.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
-    "id": "401878732",
-    "utcDate": "2026-12-26T15:00Z",
-    "status": "TIMED",
-    "matchday": 17,
-    "homeTeam": {
-      "name": "Newcastle United",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png"
-    },
-    "awayTeam": {
-      "name": "Manchester City",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png"
     },
     "score": {
       "winner": null,
@@ -3570,13 +3465,13 @@
     }
   },
   {
-    "id": "401879194",
-    "utcDate": "2026-12-30T20:00Z",
+    "id": "401878733",
+    "utcDate": "2026-12-26T17:30Z",
     "status": "TIMED",
-    "matchday": 18,
+    "matchday": 17,
     "homeTeam": {
-      "name": "Aston Villa",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/362.png"
+      "name": "Hull City",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/306.png"
     },
     "awayTeam": {
       "name": "Liverpool",
@@ -3591,8 +3486,155 @@
     }
   },
   {
+    "id": "401878732",
+    "utcDate": "2026-12-26T20:00Z",
+    "status": "TIMED",
+    "matchday": 17,
+    "homeTeam": {
+      "name": "Newcastle United",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png"
+    },
+    "awayTeam": {
+      "name": "Manchester City",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401878736",
+    "utcDate": "2026-12-27T14:00Z",
+    "status": "TIMED",
+    "matchday": 17,
+    "homeTeam": {
+      "name": "Coventry City",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/388.png"
+    },
+    "awayTeam": {
+      "name": "Chelsea",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401879195",
+    "utcDate": "2026-12-27T16:30Z",
+    "status": "TIMED",
+    "matchday": 17,
+    "homeTeam": {
+      "name": "Manchester United",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png"
+    },
+    "awayTeam": {
+      "name": "Nottingham Forest",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/393.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401878735",
+    "utcDate": "2026-12-27T19:00Z",
+    "status": "TIMED",
+    "matchday": 17,
+    "homeTeam": {
+      "name": "Crystal Palace",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png"
+    },
+    "awayTeam": {
+      "name": "Arsenal",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401879190",
+    "utcDate": "2026-12-29T19:30Z",
+    "status": "TIMED",
+    "matchday": 18,
+    "homeTeam": {
+      "name": "Hull City",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/306.png"
+    },
+    "awayTeam": {
+      "name": "Leeds United",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401879186",
+    "utcDate": "2026-12-29T19:30Z",
+    "status": "TIMED",
+    "matchday": 18,
+    "homeTeam": {
+      "name": "Tottenham Hotspur",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png"
+    },
+    "awayTeam": {
+      "name": "Brighton & Hove Albion",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401879192",
+    "utcDate": "2026-12-29T20:15Z",
+    "status": "TIMED",
+    "matchday": 18,
+    "homeTeam": {
+      "name": "Everton",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png"
+    },
+    "awayTeam": {
+      "name": "Manchester City",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
     "id": "401878730",
-    "utcDate": "2026-12-30T20:00Z",
+    "utcDate": "2026-12-30T19:30Z",
     "status": "TIMED",
     "matchday": 18,
     "homeTeam": {
@@ -3613,7 +3655,7 @@
   },
   {
     "id": "401879193",
-    "utcDate": "2026-12-30T20:00Z",
+    "utcDate": "2026-12-30T19:30Z",
     "status": "TIMED",
     "matchday": 18,
     "homeTeam": {
@@ -3633,29 +3675,8 @@
     }
   },
   {
-    "id": "401879192",
-    "utcDate": "2026-12-30T20:00Z",
-    "status": "TIMED",
-    "matchday": 18,
-    "homeTeam": {
-      "name": "Everton",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png"
-    },
-    "awayTeam": {
-      "name": "Manchester City",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
     "id": "401879191",
-    "utcDate": "2026-12-30T20:00Z",
+    "utcDate": "2026-12-30T19:30Z",
     "status": "TIMED",
     "matchday": 18,
     "homeTeam": {
@@ -3675,50 +3696,8 @@
     }
   },
   {
-    "id": "401879190",
-    "utcDate": "2026-12-30T20:00Z",
-    "status": "TIMED",
-    "matchday": 18,
-    "homeTeam": {
-      "name": "Hull City",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/306.png"
-    },
-    "awayTeam": {
-      "name": "Leeds United",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
-    "id": "401879189",
-    "utcDate": "2026-12-30T20:00Z",
-    "status": "TIMED",
-    "matchday": 18,
-    "homeTeam": {
-      "name": "Ipswich Town",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/373.png"
-    },
-    "awayTeam": {
-      "name": "Chelsea",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
     "id": "401879188",
-    "utcDate": "2026-12-30T20:00Z",
+    "utcDate": "2026-12-30T19:30Z",
     "status": "TIMED",
     "matchday": 18,
     "homeTeam": {
@@ -3739,7 +3718,7 @@
   },
   {
     "id": "401879187",
-    "utcDate": "2026-12-30T20:00Z",
+    "utcDate": "2026-12-30T19:30Z",
     "status": "TIMED",
     "matchday": 18,
     "homeTeam": {
@@ -3759,17 +3738,17 @@
     }
   },
   {
-    "id": "401879186",
-    "utcDate": "2026-12-30T20:00Z",
+    "id": "401879194",
+    "utcDate": "2026-12-30T20:15Z",
     "status": "TIMED",
     "matchday": 18,
     "homeTeam": {
-      "name": "Tottenham Hotspur",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png"
+      "name": "Aston Villa",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/362.png"
     },
     "awayTeam": {
-      "name": "Brighton & Hove Albion",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png"
+      "name": "Liverpool",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png"
     },
     "score": {
       "winner": null,
@@ -3780,17 +3759,59 @@
     }
   },
   {
-    "id": "401878729",
-    "utcDate": "2027-01-02T15:00Z",
+    "id": "401879189",
+    "utcDate": "2026-12-30T20:15Z",
+    "status": "TIMED",
+    "matchday": 18,
+    "homeTeam": {
+      "name": "Ipswich Town",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/373.png"
+    },
+    "awayTeam": {
+      "name": "Chelsea",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401879182",
+    "utcDate": "2027-01-01T20:00Z",
     "status": "TIMED",
     "matchday": 19,
     "homeTeam": {
-      "name": "AFC Bournemouth",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png"
+      "name": "Leeds United",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png"
     },
     "awayTeam": {
-      "name": "Aston Villa",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/362.png"
+      "name": "Everton",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401878728",
+    "utcDate": "2027-01-02T12:30Z",
+    "status": "TIMED",
+    "matchday": 19,
+    "homeTeam": {
+      "name": "Brighton & Hove Albion",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png"
+    },
+    "awayTeam": {
+      "name": "Manchester United",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png"
     },
     "score": {
       "winner": null,
@@ -3843,69 +3864,6 @@
     }
   },
   {
-    "id": "401878728",
-    "utcDate": "2027-01-02T15:00Z",
-    "status": "TIMED",
-    "matchday": 19,
-    "homeTeam": {
-      "name": "Brighton & Hove Albion",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png"
-    },
-    "awayTeam": {
-      "name": "Manchester United",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
-    "id": "401879183",
-    "utcDate": "2027-01-02T15:00Z",
-    "status": "TIMED",
-    "matchday": 19,
-    "homeTeam": {
-      "name": "Chelsea",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png"
-    },
-    "awayTeam": {
-      "name": "Newcastle United",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
-    "id": "401879182",
-    "utcDate": "2027-01-02T15:00Z",
-    "status": "TIMED",
-    "matchday": 19,
-    "homeTeam": {
-      "name": "Leeds United",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png"
-    },
-    "awayTeam": {
-      "name": "Everton",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
     "id": "401879181",
     "utcDate": "2027-01-02T15:00Z",
     "status": "TIMED",
@@ -3917,27 +3875,6 @@
     "awayTeam": {
       "name": "Coventry City",
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/388.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
-    "id": "401879180",
-    "utcDate": "2027-01-02T15:00Z",
-    "status": "TIMED",
-    "matchday": 19,
-    "homeTeam": {
-      "name": "Manchester City",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png"
-    },
-    "awayTeam": {
-      "name": "Tottenham Hotspur",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png"
     },
     "score": {
       "winner": null,
@@ -3990,8 +3927,71 @@
     }
   },
   {
+    "id": "401878729",
+    "utcDate": "2027-01-02T17:30Z",
+    "status": "TIMED",
+    "matchday": 19,
+    "homeTeam": {
+      "name": "AFC Bournemouth",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png"
+    },
+    "awayTeam": {
+      "name": "Aston Villa",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/362.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401879183",
+    "utcDate": "2027-01-03T14:00Z",
+    "status": "TIMED",
+    "matchday": 19,
+    "homeTeam": {
+      "name": "Chelsea",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png"
+    },
+    "awayTeam": {
+      "name": "Newcastle United",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401879180",
+    "utcDate": "2027-01-03T16:30Z",
+    "status": "TIMED",
+    "matchday": 19,
+    "homeTeam": {
+      "name": "Manchester City",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png"
+    },
+    "awayTeam": {
+      "name": "Tottenham Hotspur",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
     "id": "401879177",
-    "utcDate": "2027-01-06T20:00Z",
+    "utcDate": "2027-01-05T19:30Z",
     "status": "TIMED",
     "matchday": 20,
     "homeTeam": {
@@ -4012,7 +4012,7 @@
   },
   {
     "id": "401879176",
-    "utcDate": "2027-01-06T20:00Z",
+    "utcDate": "2027-01-05T19:30Z",
     "status": "TIMED",
     "matchday": 20,
     "homeTeam": {
@@ -4032,29 +4032,8 @@
     }
   },
   {
-    "id": "401879175",
-    "utcDate": "2027-01-06T20:00Z",
-    "status": "TIMED",
-    "matchday": 20,
-    "homeTeam": {
-      "name": "Crystal Palace",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png"
-    },
-    "awayTeam": {
-      "name": "Chelsea",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
     "id": "401879174",
-    "utcDate": "2027-01-06T20:00Z",
+    "utcDate": "2027-01-05T19:30Z",
     "status": "TIMED",
     "matchday": 20,
     "homeTeam": {
@@ -4074,92 +4053,8 @@
     }
   },
   {
-    "id": "401879173",
-    "utcDate": "2027-01-06T20:00Z",
-    "status": "TIMED",
-    "matchday": 20,
-    "homeTeam": {
-      "name": "Fulham",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/370.png"
-    },
-    "awayTeam": {
-      "name": "Tottenham Hotspur",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
-    "id": "401879172",
-    "utcDate": "2027-01-06T20:00Z",
-    "status": "TIMED",
-    "matchday": 20,
-    "homeTeam": {
-      "name": "Ipswich Town",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/373.png"
-    },
-    "awayTeam": {
-      "name": "Coventry City",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/388.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
-    "id": "401879171",
-    "utcDate": "2027-01-06T20:00Z",
-    "status": "TIMED",
-    "matchday": 20,
-    "homeTeam": {
-      "name": "Leeds United",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png"
-    },
-    "awayTeam": {
-      "name": "Manchester City",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
-    "id": "401879170",
-    "utcDate": "2027-01-06T20:00Z",
-    "status": "TIMED",
-    "matchday": 20,
-    "homeTeam": {
-      "name": "Manchester United",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png"
-    },
-    "awayTeam": {
-      "name": "Newcastle United",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
     "id": "401879169",
-    "utcDate": "2027-01-06T20:00Z",
+    "utcDate": "2027-01-05T19:30Z",
     "status": "TIMED",
     "matchday": 20,
     "homeTeam": {
@@ -4180,7 +4075,7 @@
   },
   {
     "id": "401878727",
-    "utcDate": "2027-01-06T20:00Z",
+    "utcDate": "2027-01-05T20:15Z",
     "status": "TIMED",
     "matchday": 20,
     "homeTeam": {
@@ -4190,6 +4085,111 @@
     "awayTeam": {
       "name": "Liverpool",
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401879175",
+    "utcDate": "2027-01-06T19:30Z",
+    "status": "TIMED",
+    "matchday": 20,
+    "homeTeam": {
+      "name": "Crystal Palace",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png"
+    },
+    "awayTeam": {
+      "name": "Chelsea",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401879173",
+    "utcDate": "2027-01-06T19:30Z",
+    "status": "TIMED",
+    "matchday": 20,
+    "homeTeam": {
+      "name": "Fulham",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/370.png"
+    },
+    "awayTeam": {
+      "name": "Tottenham Hotspur",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401879172",
+    "utcDate": "2027-01-06T19:30Z",
+    "status": "TIMED",
+    "matchday": 20,
+    "homeTeam": {
+      "name": "Ipswich Town",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/373.png"
+    },
+    "awayTeam": {
+      "name": "Coventry City",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/388.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401879171",
+    "utcDate": "2027-01-06T20:15Z",
+    "status": "TIMED",
+    "matchday": 20,
+    "homeTeam": {
+      "name": "Leeds United",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png"
+    },
+    "awayTeam": {
+      "name": "Manchester City",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401879170",
+    "utcDate": "2027-01-07T20:00Z",
+    "status": "TIMED",
+    "matchday": 20,
+    "homeTeam": {
+      "name": "Manchester United",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png"
+    },
+    "awayTeam": {
+      "name": "Newcastle United",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png"
     },
     "score": {
       "winner": null,
