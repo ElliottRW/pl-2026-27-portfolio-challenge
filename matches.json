@@ -737,7 +737,7 @@
   {
     "id": "401879277",
     "utcDate": "2026-09-12T16:30Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 4,
     "homeTeam": {
       "name": "Tottenham Hotspur",
@@ -748,10 +748,10 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       }
     }
   },
