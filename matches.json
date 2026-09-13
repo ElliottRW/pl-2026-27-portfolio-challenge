@@ -779,7 +779,7 @@
   {
     "id": "401879282",
     "utcDate": "2026-09-13T13:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 4,
     "homeTeam": {
       "name": "Coventry City",
@@ -790,17 +790,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 5
       }
     }
   },
   {
     "id": "401879278",
     "utcDate": "2026-09-13T15:30Z",
-    "status": "TIMED",
+    "status": "PAUSED",
     "matchday": 4,
     "homeTeam": {
       "name": "Manchester United",
