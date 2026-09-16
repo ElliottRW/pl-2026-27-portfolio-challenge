@@ -2,10 +2,10 @@ name: Update Match Data
 
 on:
   schedule:
-    # Once a day at 07:00 UTC (~7-8am UK) — comfortably after even the
+    # Once a day at 03:00 UTC (~3-4am UK) — comfortably after even the
     # latest match the night before has finished, so results are ready for
     # a morning check. This isn't a live scoreboard, just a daily refresh.
-    - cron: '0 7 * * *'
+    - cron: '0 3 * * *'
   workflow_dispatch:
 
 permissions:
