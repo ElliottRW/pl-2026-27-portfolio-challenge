@@ -2,7 +2,10 @@ name: Update Match Data
 
 on:
   schedule:
-    - cron: '0 * * * *' # hourly — the job itself no-ops on non-matchdays, see below
+    # Hourly, 10:00-23:00 UTC only — covers UK kickoffs from ~11:00 through the
+    # latest finishes (~22:30 local) in both BST (UTC+1) and GMT (UTC+0), with a
+    # bit of buffer either side. The job itself also no-ops on non-matchdays.
+    - cron: '0 10-23 * * *'
   workflow_dispatch:
 
 permissions:
