@@ -136,16 +136,29 @@ jobs:
               print('ERROR: no fixture dates available from FPL or existing matches.json', file=sys.stderr)
               sys.exit(1)
 
-          # ── Skip entirely if today isn't a Premier League matchday ─────────────
-          # The schedule below fires hourly regardless, but there's nothing to
-          # refresh on a day with no fixtures — exit early rather than spending
-          # 64 ESPN requests confirming that nothing changed.
+          # ── Non-matchdays: just one run around noon UK time ─────────────────────
+          # The schedule below fires hourly (10:00-23:00 UTC) regardless of
+          # whether there's a fixture today. On an actual matchday that's all
+          # wanted — but on a day with nothing scheduled there's no need for 14
+          # runs confirming that, just one check-in around midday UK time (to
+          # pick up schedule changes, e.g. a fixture getting moved) is enough.
 
           import datetime
-          today = datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%d')
-          if today not in match_dates:
-              print(f'{today} is not a Premier League matchday — nothing to refresh, skipping.')
+          now_utc = datetime.datetime.now(datetime.timezone.utc)
+          today = now_utc.strftime('%Y%m%d')  # matches match_dates, which is UTC-derived too
+          is_matchday = today in match_dates
+
+          try:
+              from zoneinfo import ZoneInfo
+              uk_hour = now_utc.astimezone(ZoneInfo('Europe/London')).hour
+          except Exception:
+              uk_hour = now_utc.hour  # fallback if tzdata is unavailable
+
+          if not is_matchday and uk_hour != 12:
+              print(f'{today} is not a matchday and it\'s not the ~noon UK check-in (currently {uk_hour}:00 UK) — skipping.')
               sys.exit(0)
+          elif not is_matchday:
+              print(f'{today} is not a matchday — running the once-daily noon UK check-in.')
 
           # ── Fetch each matchday's fixtures from ESPN ────────────────────────────
 
