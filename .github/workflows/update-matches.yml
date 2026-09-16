@@ -20,7 +20,11 @@ jobs:
           import json, subprocess, sys
 
           def fetch(url):
-              r = subprocess.run(['curl', '-s', '--max-time', '15', url], capture_output=True, text=True)
+              # --compressed: ask for gzip and let curl decompress it before we
+              # see it. Without this, a server that starts gzipping responses
+              # (ESPN's CDN did, 2026-09-16) hands us raw gzip bytes that
+              # text=True then fails to decode as UTF-8.
+              r = subprocess.run(['curl', '-s', '--compressed', '--max-time', '15', url], capture_output=True, text=True)
               if r.returncode != 0 or not r.stdout.strip():
                   return None
               try:
@@ -50,22 +54,11 @@ jobs:
                           finished_cache[(h, a)] = m
               print(f'Ratchet: loaded {len(finished_cache)} previously-finished matches')
           except Exception as e:
+              existing = []
               finished_cache = {}
               print(f'Ratchet: starting fresh ({e})')
 
-          # ── Fetch full 2026/27 season from ESPN ───────────────────────────────
-
-          url = ('https://site.api.espn.com/apis/site/v2/sports/soccer'
-                 '/eng.1/scoreboard?dates=20260801-20270601&limit=500')
-          data = fetch(url)
-          if not data:
-              print('ERROR: Could not fetch ESPN data', file=sys.stderr)
-              sys.exit(1)
-
-          events = data.get('events', [])
-          print(f'ESPN returned {len(events)} events')
-
-          # ── Gameweek: official FPL event number (primary), date-bucket fallback ─
+          # ── Gameweek + fixture dates: official FPL API (primary) ───────────────
           #
           # ESPN's scoreboard has no round/gameweek field — reconstructing one by
           # chronologically bucketing 10 matches at a time breaks down whenever the
@@ -76,6 +69,13 @@ jobs:
           # double gameweeks and follows reschedules, so it's used as the primary
           # source here — same approach as the Last Man Standing project. Falls back
           # to date-bucketing only if FPL is unreachable.
+          #
+          # It's also now our source of *which dates* to ask ESPN about: ESPN's
+          # scoreboard used to accept a date RANGE (dates=A-B) to fetch the whole
+          # season in one request, but as of 2026-09-16 that 400s ("Failed to get
+          # events endpoint") even for a 2-day span, while single-day queries
+          # (dates=YYYYMMDD) still work. So each of FPL's ~64 unique matchday dates
+          # gets its own request instead of one big range request.
 
           FPL_NAME_MAP = {
               'Man City':      'Manchester City',
@@ -89,33 +89,68 @@ jobs:
               'Wolves':        'Wolverhampton Wanderers',
           }
 
-          def fpl_matchday_lookup():
+          def fpl_fixtures_and_matchday():
               teams_data = fetch('https://fantasy.premierleague.com/api/bootstrap-static/')
               fixtures   = fetch('https://fantasy.premierleague.com/api/fixtures/')
               if not teams_data or not fixtures:
-                  return None
+                  return None, None
               id_to_name = {}
               for t in teams_data.get('teams', []):
                   name = t.get('name', '')
                   id_to_name[t['id']] = FPL_NAME_MAP.get(name, name)
               lookup = {}
+              dates = set()
               for f in fixtures:
                   event = f.get('event')
                   h, a = id_to_name.get(f.get('team_h')), id_to_name.get(f.get('team_a'))
                   if event and h and a:
                       lookup[(h, a)] = event
-              return lookup or None
+                  kt = f.get('kickoff_time')
+                  if kt:
+                      dates.add(kt[:10].replace('-', ''))
+              return (lookup or None), (dates or None)
 
-          matchday_by_teams = None
+          matchday_by_teams, match_dates = None, None
           try:
-              matchday_by_teams = fpl_matchday_lookup()
+              matchday_by_teams, match_dates = fpl_fixtures_and_matchday()
           except Exception as e:
-              print(f'FPL fetch failed, will fall back to date-bucketing: {e}')
+              print(f'FPL fetch failed: {e}')
 
           if matchday_by_teams:
               print(f'Using FPL as gameweek source ({len(matchday_by_teams)} fixtures tagged)')
           else:
-              print('FPL unavailable — falling back to chronological date-bucketing')
+              print('FPL unavailable — matchday will fall back to date-bucketing')
+
+          if not match_dates:
+              # FPL down too: fall back to the dates already known from the
+              # previously-committed matches.json (won't discover fixtures FPL
+              # hasn't told us about, but keeps the job from failing outright).
+              match_dates = {m['utcDate'][:10].replace('-', '') for m in existing if m.get('utcDate')}
+              if match_dates:
+                  print(f'Using {len(match_dates)} fixture dates from the existing matches.json as a fallback')
+
+          if not match_dates:
+              print('ERROR: no fixture dates available from FPL or existing matches.json', file=sys.stderr)
+              sys.exit(1)
+
+          # ── Fetch each matchday's fixtures from ESPN ────────────────────────────
+
+          events = []
+          seen_ids = set()
+          for d in sorted(match_dates):
+              day_data = fetch(f'https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard?dates={d}&limit=500')
+              if not day_data:
+                  print(f'  WARNING: no ESPN data for {d}')
+                  continue
+              for e in day_data.get('events', []):
+                  if e['id'] not in seen_ids:
+                      seen_ids.add(e['id'])
+                      events.append(e)
+
+          print(f'ESPN returned {len(events)} events across {len(match_dates)} matchdays')
+          if not events:
+              print('ERROR: Could not fetch any ESPN data', file=sys.stderr)
+              sys.exit(1)
 
           # Fallback: bucket matches chronologically, 10 per round (20 clubs / 2).
           sorted_ids = sorted(events, key=lambda e: e['date'])
