@@ -2,7 +2,7 @@ name: Update Match Data
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '0 * * * *' # hourly — the job itself no-ops on non-matchdays, see below
   workflow_dispatch:
 
 permissions:
@@ -132,6 +132,17 @@ jobs:
           if not match_dates:
               print('ERROR: no fixture dates available from FPL or existing matches.json', file=sys.stderr)
               sys.exit(1)
+
+          # ── Skip entirely if today isn't a Premier League matchday ─────────────
+          # The schedule below fires hourly regardless, but there's nothing to
+          # refresh on a day with no fixtures — exit early rather than spending
+          # 64 ESPN requests confirming that nothing changed.
+
+          import datetime
+          today = datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%d')
+          if today not in match_dates:
+              print(f'{today} is not a Premier League matchday — nothing to refresh, skipping.')
+              sys.exit(0)
 
           # ── Fetch each matchday's fixtures from ESPN ────────────────────────────
 
