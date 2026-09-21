@@ -968,7 +968,7 @@
   {
     "id": "401879276",
     "utcDate": "2026-09-20T13:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 5,
     "homeTeam": {
       "name": "AFC Bournemouth",
@@ -979,17 +979,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       }
     }
   },
   {
     "id": "401879273",
     "utcDate": "2026-09-20T13:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 5,
     "homeTeam": {
       "name": "Leeds United",
@@ -1000,17 +1000,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       }
     }
   },
   {
     "id": "401879272",
     "utcDate": "2026-09-20T13:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 5,
     "homeTeam": {
       "name": "Manchester City",
@@ -1021,17 +1021,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/366.png"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 5,
+        "away": 3
       }
     }
   },
   {
     "id": "401878777",
     "utcDate": "2026-09-20T15:30Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 5,
     "homeTeam": {
       "name": "Fulham",
@@ -1042,10 +1042,10 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       }
     }
   },
