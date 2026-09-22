@@ -214,14 +214,14 @@ function renderBonusPoints() {
     .map(team => ({ team, ...teamBonusBreakdown(team, _matches) }))
     .sort((a, b) => b.bonusPts - a.bonusPts || b.cleanSheets - a.cleanSheets || a.team.localeCompare(b.team));
 
-  const totalCleanSheets = rows.reduce((s, r) => s + r.cleanSheets, 0);
-  const totalBigWins     = rows.reduce((s, r) => s + r.bigWinGames, 0);
-  const totalBonusPts    = rows.reduce((s, r) => s + r.bonusPts, 0);
+  const totalCleanSheets  = rows.reduce((s, r) => s + r.cleanSheets, 0);
+  const totalGoalBonusPts = rows.reduce((s, r) => s + r.goalBonusPts, 0);
+  const totalBonusPts     = rows.reduce((s, r) => s + r.bonusPts, 0);
 
   const summary = `
     <div class="stats-grid" style="margin-bottom:1.25rem">
-      <div class="stat-card"><div class="val">${totalCleanSheets}</div><div class="lbl">Clean Sheets</div></div>
-      <div class="stat-card"><div class="val">${totalBigWins}</div><div class="lbl">Games with 4+ Goals</div></div>
+      <div class="stat-card"><div class="val">${totalCleanSheets}</div><div class="lbl">Clean Sheet Pts</div></div>
+      <div class="stat-card"><div class="val">${totalGoalBonusPts}</div><div class="lbl">Goal Bonus Pts</div></div>
       <div class="stat-card"><div class="val">${totalBonusPts}</div><div class="lbl">Total Bonus Pts</div></div>
     </div>`;
 
@@ -231,18 +231,31 @@ function renderBonusPoints() {
     return;
   }
 
-  const tableRows = earners.map(r => `<tr>
-    <td style="font-weight:600;white-space:nowrap">${esc(r.team)}</td>
-    <td style="text-align:center">${r.cleanSheets}</td>
-    <td style="text-align:center">${r.bigWinGames}</td>
-    <td><span class="pts-pill">${r.bonusPts}</span></td>
-  </tr>`).join('');
+  // Multi-line hover tooltip listing exactly which matches earned the points.
+  const gamesTip = games => games.map(g => `${g.label}  (+${g.pts})`).join('\n');
+
+  const tableRows = earners.map(r => {
+    const csCell = r.cleanSheets > 0
+      ? `<span class="has-tip tip-pre" data-tip="${esc(gamesTip(r.cleanSheetGames))}">${r.cleanSheets}</span>`
+      : '0';
+    const gbCell = r.goalBonusPts > 0
+      ? `<span class="has-tip tip-pre" data-tip="${esc(gamesTip(r.goalBonusGames))}">${r.goalBonusPts}</span>`
+      : '0';
+    return `<tr>
+      <td style="font-weight:600;white-space:nowrap">${esc(r.team)}</td>
+      <td style="text-align:center">${csCell}</td>
+      <td style="text-align:center">${gbCell}</td>
+      <td><span class="pts-pill">${r.bonusPts}</span></td>
+    </tr>`;
+  }).join('');
 
   el.innerHTML = summary + `
     <table>
       <thead><tr>
-        <th>Club</th><th title="Matches conceding 0">Clean Sheets</th>
-        <th title="Matches scoring 4 or more goals">Big Wins</th><th>Bonus Pts</th>
+        <th>Club</th>
+        <th title="+1 pt per match conceding 0 — hover a value to see which matches">Clean Sheet Pts</th>
+        <th title="+1 pt per goal above 3 in a single match — hover a value to see which matches">Goal Bonus Pts</th>
+        <th>Bonus Pts</th>
       </tr></thead>
       <tbody>${tableRows}</tbody>
     </table>`;

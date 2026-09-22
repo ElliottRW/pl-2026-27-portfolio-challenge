@@ -78,24 +78,49 @@ function allGameweeksPlayed(matches) {
 
 // ── BONUS POINTS BREAKDOWN ────────────────────────────────────────────────────
 
-/** A club's clean sheets, 4+-goal games, and resulting bonus points, season-to-date. */
+/**
+ * A club's clean sheets and goal-bonus points, season-to-date, plus which
+ * specific matches earned them (for tooltips) — each as
+ * { label, pts, utcDate }, most recent first.
+ */
 function teamBonusBreakdown(team, matches) {
   const mine = matches.filter(m =>
     m.status === 'FINISHED' && m.score?.winner &&
     (getDisplayName(m.homeTeam?.name) === team || getDisplayName(m.awayTeam?.name) === team)
   );
 
-  let cleanSheets = 0, bigWinGames = 0, goalBonusPts = 0;
+  let cleanSheets = 0, goalBonusPts = 0;
+  const cleanSheetGames = [];
+  const goalBonusGames  = [];
+
   for (const m of mine) {
-    const isHome = getDisplayName(m.homeTeam?.name) === team;
+    const isHome   = getDisplayName(m.homeTeam?.name) === team;
+    const opponent = isHome ? getDisplayName(m.awayTeam?.name) : getDisplayName(m.homeTeam?.name);
     const goalsFor     = isHome ? m.score.fullTime?.home : m.score.fullTime?.away;
     const goalsAgainst = isHome ? m.score.fullTime?.away : m.score.fullTime?.home;
-    if (goalsAgainst === 0) cleanSheets++;
-    if (goalsFor >= 4)      bigWinGames++;
-    if (goalsFor > SCORING.GOAL_BONUS_THRESHOLD) goalBonusPts += goalsFor - SCORING.GOAL_BONUS_THRESHOLD;
+    const dateLabel = new Date(m.utcDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+    const venue     = isHome ? 'H' : 'A';
+    const scoreLine = `${dateLabel} (${venue}) ${goalsFor}–${goalsAgainst} vs ${opponent}`;
+
+    if (goalsAgainst === 0) {
+      cleanSheets++;
+      cleanSheetGames.push({ label: scoreLine, pts: SCORING.CLEAN_SHEET, utcDate: m.utcDate });
+    }
+    if (goalsFor > SCORING.GOAL_BONUS_THRESHOLD) {
+      const pts = goalsFor - SCORING.GOAL_BONUS_THRESHOLD;
+      goalBonusPts += pts;
+      goalBonusGames.push({ label: scoreLine, pts, utcDate: m.utcDate });
+    }
   }
 
-  return { cleanSheets, bigWinGames, goalBonusPts, bonusPts: cleanSheets * SCORING.CLEAN_SHEET + goalBonusPts };
+  const byRecency = (a, b) => new Date(b.utcDate) - new Date(a.utcDate);
+  cleanSheetGames.sort(byRecency);
+  goalBonusGames.sort(byRecency);
+
+  return {
+    cleanSheets, goalBonusPts, cleanSheetGames, goalBonusGames,
+    bonusPts: cleanSheets * SCORING.CLEAN_SHEET + goalBonusPts,
+  };
 }
 
 // ── HINDSIGHT BEST ENTRY ──────────────────────────────────────────────────────
