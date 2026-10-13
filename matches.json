@@ -1241,7 +1241,7 @@
   {
     "id": "401879267",
     "utcDate": "2026-10-12T19:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 6,
     "homeTeam": {
       "name": "Coventry City",
@@ -1252,10 +1252,10 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 4,
+        "away": 1
       }
     }
   },
