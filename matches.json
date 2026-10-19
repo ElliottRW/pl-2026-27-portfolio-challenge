@@ -1367,7 +1367,7 @@
   {
     "id": "401879263",
     "utcDate": "2026-10-18T13:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 7,
     "homeTeam": {
       "name": "AFC Bournemouth",
@@ -1378,17 +1378,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/366.png"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 0
       }
     }
   },
   {
     "id": "401879261",
     "utcDate": "2026-10-18T13:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 7,
     "homeTeam": {
       "name": "Brighton & Hove Albion",
@@ -1399,17 +1399,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 5,
+        "away": 0
       }
     }
   },
   {
     "id": "401879260",
     "utcDate": "2026-10-18T13:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 7,
     "homeTeam": {
       "name": "Leeds United",
@@ -1420,17 +1420,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       }
     }
   },
   {
     "id": "401878769",
     "utcDate": "2026-10-18T15:30Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 7,
     "homeTeam": {
       "name": "Nottingham Forest",
@@ -1441,10 +1441,10 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       }
     }
   },
