@@ -1871,7 +1871,7 @@
   {
     "id": "401878762",
     "utcDate": "2026-11-02T20:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 9,
     "homeTeam": {
       "name": "Newcastle United",
@@ -1882,10 +1882,10 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       }
     }
   },
