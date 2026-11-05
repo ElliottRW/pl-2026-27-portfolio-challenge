@@ -3234,27 +3234,6 @@
     }
   },
   {
-    "id": "401879198",
-    "utcDate": "2026-12-19T15:00Z",
-    "status": "TIMED",
-    "matchday": 16,
-    "homeTeam": {
-      "name": "Nottingham Forest",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/393.png"
-    },
-    "awayTeam": {
-      "name": "Everton",
-      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png"
-    },
-    "score": {
-      "winner": null,
-      "fullTime": {
-        "home": null,
-        "away": null
-      }
-    }
-  },
-  {
     "id": "401879200",
     "utcDate": "2026-12-19T17:30Z",
     "status": "TIMED",
@@ -3287,6 +3266,27 @@
     "awayTeam": {
       "name": "Ipswich Town",
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/373.png"
+    },
+    "score": {
+      "winner": null,
+      "fullTime": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "id": "401879198",
+    "utcDate": "2026-12-20T14:00Z",
+    "status": "TIMED",
+    "matchday": 16,
+    "homeTeam": {
+      "name": "Nottingham Forest",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/393.png"
+    },
+    "awayTeam": {
+      "name": "Everton",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png"
     },
     "score": {
       "winner": null,
