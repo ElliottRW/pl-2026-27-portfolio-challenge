@@ -1997,7 +1997,7 @@
   {
     "id": "401879244",
     "utcDate": "2026-11-08T14:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 10,
     "homeTeam": {
       "name": "Brighton & Hove Albion",
@@ -2008,17 +2008,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/337.png"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 0
       }
     }
   },
   {
     "id": "401879243",
     "utcDate": "2026-11-08T14:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 10,
     "homeTeam": {
       "name": "Crystal Palace",
@@ -2029,17 +2029,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 3
       }
     }
   },
   {
     "id": "401878759",
     "utcDate": "2026-11-08T14:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 10,
     "homeTeam": {
       "name": "Ipswich Town",
@@ -2050,17 +2050,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 2
       }
     }
   },
   {
     "id": "401879239",
     "utcDate": "2026-11-08T14:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 10,
     "homeTeam": {
       "name": "Sunderland",
@@ -2071,17 +2071,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       }
     }
   },
   {
     "id": "401879240",
     "utcDate": "2026-11-08T16:30Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 10,
     "homeTeam": {
       "name": "Manchester United",
@@ -2092,10 +2092,10 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/362.png"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 4,
+        "away": 4
       }
     }
   },
