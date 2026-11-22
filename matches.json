@@ -2102,7 +2102,7 @@
   {
     "id": "401879233",
     "utcDate": "2026-11-21T12:30Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 11,
     "homeTeam": {
       "name": "Manchester City",
@@ -2113,17 +2113,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/370.png"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       }
     }
   },
   {
     "id": "401879238",
     "utcDate": "2026-11-21T15:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 11,
     "homeTeam": {
       "name": "AFC Bournemouth",
@@ -2134,17 +2134,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/393.png"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 0
       }
     }
   },
   {
     "id": "401878756",
     "utcDate": "2026-11-21T15:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 11,
     "homeTeam": {
       "name": "Aston Villa",
@@ -2155,17 +2155,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/366.png"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       }
     }
   },
   {
     "id": "401879236",
     "utcDate": "2026-11-21T15:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 11,
     "homeTeam": {
       "name": "Chelsea",
@@ -2176,17 +2176,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 4
       }
     }
   },
   {
     "id": "401879235",
     "utcDate": "2026-11-21T15:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 11,
     "homeTeam": {
       "name": "Coventry City",
@@ -2197,17 +2197,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 2
       }
     }
   },
   {
     "id": "401878754",
     "utcDate": "2026-11-21T15:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 11,
     "homeTeam": {
       "name": "Tottenham Hotspur",
@@ -2218,17 +2218,17 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/373.png"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 0
       }
     }
   },
   {
     "id": "401879232",
     "utcDate": "2026-11-21T17:30Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 11,
     "homeTeam": {
       "name": "Newcastle United",
@@ -2239,10 +2239,10 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 2
       }
     }
   },
