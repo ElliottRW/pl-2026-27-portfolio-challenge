@@ -2312,7 +2312,7 @@
   {
     "id": "401879225",
     "utcDate": "2026-11-27T20:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 12,
     "homeTeam": {
       "name": "Nottingham Forest",
@@ -2323,10 +2323,10 @@
       "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 2
       }
     }
   },
